@@ -30,10 +30,11 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><strong>Sample Title</strong></td>
-                        <td>This is sample content text.</td>
+                  @foreach ($posts as $post)
+                      <tr>
+                        <td>{{$post -> id}}</td>
+                        <td><strong>{{$post -> title}}</strong></td>
+                        <td>{{$post -> content}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning me-1">
                                 Edit
@@ -44,19 +45,8 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td>2</td>
-                        <td><strong>Another Post</strong></td>
-                        <td>Bootstrap table UI only.</td>
-                        <td>
-                            <button class="btn btn-sm btn-warning me-1">
-                                Edit
-                            </button>
-                            <button class="btn btn-sm btn-danger">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
+                  @endforeach
+                   
                 </tbody>
 
             </table>

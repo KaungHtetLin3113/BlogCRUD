@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -27,6 +28,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'content' => 'required|min:1',
+        ]);
+
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content
+        ]);
+        return redirect("/posts");
         //
     }
 
